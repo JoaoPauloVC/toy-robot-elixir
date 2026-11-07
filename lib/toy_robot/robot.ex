@@ -20,10 +20,14 @@ defmodule ToyRobot.Robo do
       iex> robo |> Robo.mover() |> Robo.mover() |> Robo.mover()
       %Robo{posicao_y: 3, posicao_x: 0, direcao: :norte}
   """
-  def mover(%Robo{direcao: :norte} = robo), do: robo |> mover_norte()
-  def mover(%Robo{direcao: :sul} = robo), do: robo |> mover_sul()
-  def mover(%Robo{direcao: :leste} = robo), do: robo |> mover_leste()
-  def mover(%Robo{direcao: :oeste} = robo), do: robo |> mover_oeste()
+  def mover(%Robo{direcao: direcao} = robo) do
+    case direcao do
+      :leste -> robo |> mover_leste()
+      :oeste -> robo |> mover_oeste()
+      :norte -> robo |> mover_norte()
+      :sul -> robo |> mover_sul()
+    end
+  end
 
   defp mover_leste(%Robo{} = robo), do: %Robo{robo | posicao_x: robo.posicao_x + 1}
   defp mover_oeste(%Robo{} = robo), do: %Robo{robo | posicao_x: robo.posicao_x - 1}
