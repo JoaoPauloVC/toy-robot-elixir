@@ -21,8 +21,8 @@ A aplicação lerá um arquivo usando um nome passado por linha de comando, onde
 
 1. POSICIONAR X,Y,D
 2. MOVER
-3. ESQUERDA
-4. DIREITA
+3. ROT_ESQUERDA
+4. ROT_DIREITA
 5. REPORTAR
 
 - POSICIONAR colocar o robo na mesa na posição X (HORIZONTAL), Y (VERTICAL) na D (DIREÇÃO) NORTE, SUL, LESTE e OESTE.
@@ -33,4 +33,3 @@ A aplicação lerá um arquivo usando um nome passado por linha de comando, onde
 - REPORTAR anuncia o X, Y e D atual do robô.
 
 Como Por fim, o arquivo assume codificação ASCII. POSICIONAR tem somente um espaço, ou seja, "POSICIONAR 1, 2, NORTE" é um comando inválido. O correto seria "POSICIONAR 1,2,NORTE". Todos os comandos devem ser UPPERCASE, e todos os comandos com lowercase ou MixedCase são ignorados.
-
