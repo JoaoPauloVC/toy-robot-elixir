@@ -42,12 +42,15 @@ defmodule ToyRobot.Robo do
     %Robo{norte: 0, leste: 0, direcao: :oeste}
   """
   def rotacionar_esquerda(%Robo{direcao: direcao} = robo) do
-    case direcao do
-      :leste -> %Robo{robo | direcao: :norte}
-      :oeste -> %Robo{robo | direcao: :sul}
-      :norte -> %Robo{robo | direcao: :oeste}
-      :sul -> %Robo{robo | direcao: :leste}
-    end
+    nova_direcao =
+      case direcao do
+        :leste -> :norte
+        :oeste -> :sul
+        :norte -> :oeste
+        :sul -> :leste
+      end
+
+    %Robo{robo | direcao: nova_direcao}
   end
 
   @doc """
@@ -63,12 +66,15 @@ defmodule ToyRobot.Robo do
   %Robo{norte: 0, leste: 0, direcao: :leste}
   """
   def rotacionar_direita(%Robo{direcao: direcao} = robo) do
-    case direcao do
-      :leste -> %Robo{robo | direcao: :sul}
-      :oeste -> %Robo{robo | direcao: :norte}
-      :norte -> %Robo{robo | direcao: :leste}
-      :sul -> %Robo{robo | direcao: :oeste}
-    end
+    nova_direcao =
+      case direcao do
+        :leste -> :sul
+        :oeste -> :norte
+        :norte -> :leste
+        :sul -> :oeste
+      end
+
+    %Robo{robo | direcao: nova_direcao}
   end
 
   defp mover_leste(%Robo{} = robo), do: %Robo{robo | leste: robo.leste + 1}
