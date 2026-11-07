@@ -2,7 +2,7 @@ defmodule ToyRobot.Robo do
   @moduledoc """
   Representa um robô e suas operações.
   """
-  defstruct posicao_x: 0, posicao_y: 0, direcao: :norte
+  defstruct leste: 0, norte: 0, direcao: :norte
 
   alias ToyRobot.Robo
 
@@ -13,12 +13,12 @@ defmodule ToyRobot.Robo do
 
       iex> alias ToyRobot.Robo
       ToyRobot.Robo
-      iex> robo = %Robo{posicao_y: 0, posicao_x: 0, direcao: :norte}
-      %Robo{posicao_y: 0, posicao_x: 0, direcao: :norte}
+      iex> robo = %Robo{norte: 0, leste: 0, direcao: :norte}
+      %Robo{norte: 0, leste: 0, direcao: :norte}
       iex> robo |> Robo.mover()
-      %Robo{posicao_y: 1, posicao_x: 0, direcao: :norte}
+      %Robo{norte: 1, leste: 0, direcao: :norte}
       iex> robo |> Robo.mover() |> Robo.mover() |> Robo.mover()
-      %Robo{posicao_y: 3, posicao_x: 0, direcao: :norte}
+      %Robo{norte: 3, leste: 0, direcao: :norte}
   """
   def mover(%Robo{direcao: direcao} = robo) do
     case direcao do
@@ -29,8 +29,8 @@ defmodule ToyRobot.Robo do
     end
   end
 
-  defp mover_leste(%Robo{} = robo), do: %Robo{robo | posicao_x: robo.posicao_x + 1}
-  defp mover_oeste(%Robo{} = robo), do: %Robo{robo | posicao_x: robo.posicao_x - 1}
-  defp mover_norte(%Robo{} = robo), do: %Robo{robo | posicao_y: robo.posicao_y + 1}
-  defp mover_sul(%Robo{} = robo), do: %Robo{robo | posicao_y: robo.posicao_y - 1}
+  defp mover_leste(%Robo{} = robo), do: %Robo{robo | leste: robo.leste + 1}
+  defp mover_oeste(%Robo{} = robo), do: %Robo{robo | leste: robo.leste - 1}
+  defp mover_norte(%Robo{} = robo), do: %Robo{robo | norte: robo.norte + 1}
+  defp mover_sul(%Robo{} = robo), do: %Robo{robo | norte: robo.norte - 1}
 end
